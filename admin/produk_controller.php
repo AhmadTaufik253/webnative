@@ -13,14 +13,14 @@ $min_stok = $_POST['min_stok'];
 $jenis_produk_id = $_POST['jenis_produk_id'];
 
 // menambahkan untuk upload foto produk
-    $namaFile = $_FILES['foto']['name'];
+    $foto = $_FILES['foto']['name'];
     $ukuranFile = $_FILES['foto']['size'];
     $error = $_FILES['foto']['error'];
     $tmpName = $_FILES['foto']['tmp_name'];
 
     //check file yang di upload
     $extensiFileValid = ['jpg','jpeg','png'];
-    $extensifile = explode('.',$namaFile);
+    $extensifile = explode('.',$foto);
     $extensifile = strtolower(end($extensifile));
 
     // cheeck format

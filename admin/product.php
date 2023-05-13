@@ -31,7 +31,7 @@ if(isset($sesi)){
             DataTable Example -->
             <!-- membuat tombol mengarahkan ke file produk_form.php -->
             <?php
-            if($sesi['role'] != ('staff' && 'manager')){
+            if($sesi['role'] != 'staff'){
             ?>
             <a href="index.php?url=product_form" class="btn btn-primary btn-sm">Tambah</a>
             <?php } ?>
@@ -48,6 +48,7 @@ if(isset($sesi)){
                         <th>Stok</th>
                         <th>Minimal Stok</th>
                         <th>Jenis Produk</th>
+                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -61,6 +62,7 @@ if(isset($sesi)){
                         <th>Stok</th>
                         <th>Minimal Stok</th>
                         <th>Jenis Produk</th>
+                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -78,12 +80,13 @@ if(isset($sesi)){
                         <td><?= $row['stok'] ?></td>
                         <td><?= $row['min_stok'] ?></td>
                         <td><?= $row['Kategori'] ?></td>
+                        <td><img src="assets/img/<?= $row['foto'] ?>" width="35" height="40"></td>
                         <td>
                             <form action="produk_controller.php" method="POST">
                             
                                 <a class="btn btn-info btn-sm" href="index.php?url=product_detail&id=<?= $row ['id'] ?>">Detail</a>
                                 <?php
-                                    if($sesi['role'] == ('admin' && 'manager')){
+                                    if($sesi['role'] == 'admin'){
                                     ?>
                                 <a class="btn btn-warning btn-sm" href="index.php?url=product_form&idedit=<?= $row['id'] ?>">Ubah</a>
                                 <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="confirm('Apakah anda yakin ingin menghapus?')">Hapus</button>

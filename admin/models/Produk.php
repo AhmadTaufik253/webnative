@@ -22,14 +22,15 @@ class Produk{
         return $rs;
     }
 
+    // menambahkan upload foto
     public function simpan($data){
-        $sql = "INSERT INTO produk(kode,nama,harga_beli,Harga_jual,stok,min_stok,jenis_produk_id) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO produk(kode,nama,harga_beli,Harga_jual,stok,min_stok,jenis_produk_id,foto) VALUES (?,?,?,?,?,?,?,?)";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
     }
 
     public function ubah($data){
-        $sql = "UPDATE produk SET kode=?,nama=?,harga_beli=?,Harga_jual=?,stok=?,min_stok=?,jenis_produk_id=? WHERE id=?";
+        $sql = "UPDATE produk SET kode=?,nama=?,harga_beli=?,Harga_jual=?,stok=?,min_stok=?,jenis_produk_id=?, foto=? WHERE id=?";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
     }

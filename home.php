@@ -197,7 +197,8 @@ $prod = $produk->dataProduk();
 					<div class="col-lg-3 col-md-6">
                         
 						<div class="single-product">
-							<img class="img-fluid" src="img/product/p1.jpg" alt="">
+							<!-- menambahkan foto dari database -->
+							<img class="img-fluid" src="admin/assets/img/<?= $produk['foto'] ?>" alt="foto produk">
 							<div class="product-details">
 							<!-- panggil data pelanggan-->
 							<h6><?= $produk['nama'] ?></h6>

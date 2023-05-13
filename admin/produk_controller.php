@@ -12,6 +12,41 @@ $stok = $_POST['stok'];
 $min_stok = $_POST['min_stok'];
 $jenis_produk_id = $_POST['jenis_produk_id'];
 
+// menambahkan untuk upload foto produk
+    $namaFile = $_FILES['foto']['name'];
+    $ukuranFile = $_FILES['foto']['size'];
+    $error = $_FILES['foto']['error'];
+    $tmpName = $_FILES['foto']['tmp_name'];
+
+    //check file yang di upload
+    $extensiFileValid = ['jpg','jpeg','png'];
+    $extensifile = explode('.',$namaFile);
+    $extensifile = strtolower(end($extensifile));
+
+    // cheeck format
+    if(!in_array($extensifile, $extensiFileValid)){
+        // pesan gagal
+        echo "<script> alert(tidak valid) </script>";
+        die();
+    }
+
+    // check ukuran file 2 mb
+    if($ukuranFile > 2048000){
+        // pesan gagal
+        // pesan gagal
+        echo "<script> alert(tidak valid) </script>";
+        die();
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $extensifile;
+
+    // pindahkan ke folder local
+    move_uploaded_file($tmpName, 'assets/img/'. $namaFileBaru);
+
+
+
 // menangkap form diatas dijadikan array
 $data = [
     $kode,
@@ -21,6 +56,7 @@ $data = [
     $stok,
     $min_stok,
     $jenis_produk_id,
+    $namaFileBaru,
 ];
 $model = new Produk();
 $tombol = $_REQUEST['proses'];

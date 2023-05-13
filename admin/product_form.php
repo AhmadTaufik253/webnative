@@ -6,7 +6,7 @@ $idedit = $_REQUEST['idedit'];
 $prod = !empty($idedit) ? $obj_produk->getProduk($idedit) : array();
 
 ?>
-<form class="mt-4" action="produk_controller.php" method="POST">
+<form class="mt-4" action="produk_controller.php" method="POST" enctype="multipart/form-data">
   <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Kode</label> 
     <div class="col-8">
@@ -47,6 +47,13 @@ $prod = !empty($idedit) ? $obj_produk->getProduk($idedit) : array();
     <label for="text6" class="col-4 col-form-label">Jenis Produk</label> 
     <div class="col-8">
       <input id="jenis_produk_id" name="jenis_produk_id" type="text" class="form-control" value="<?= $prod['jenis_produk_id'] ?>">
+    </div>
+  </div> 
+  <!-- menambahkan field untuk upload foto -->
+  <div class="form-group row">
+    <label for="text6" class="col-4 col-form-label">Foto</label> 
+    <div class="col-8">
+      <input id="foto" name="foto" type="file" class="form-control" value="<?= $prod['foto'] ?>">
     </div>
   </div> 
   <div class="form-group row">
